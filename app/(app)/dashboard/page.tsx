@@ -7,6 +7,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useRouter } from "next/navigation";
 import {
   Users,
   Briefcase,
@@ -53,6 +54,7 @@ export default function DashboardPage() {
   const [orgName, setOrgName] = useState<string | null>(null);
   const [recentActivity, setRecentActivity] = useState<RecentActivity[]>([]);
   const supabase = createClient();
+  const router = useRouter();
 
   useEffect(() => {
     const fetchDashboardData = async () => {
@@ -74,6 +76,7 @@ export default function DashboardPage() {
         if (!orgId) {
           setStats({ total_jobs: 0, active_jobs: 0, total_candidates: 0, total_applications: 0, upcoming_interviews: 0, recent_matches: 0 });
           setLoading(false);
+          router.replace("/onboarding");
           return;
         }
 
@@ -167,18 +170,18 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      {/* No org banner */}
+      {/* No org banner — normally unreachable (redirect fires first) */}
       {!loading && !orgName && (
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 flex items-start gap-4">
           <AlertCircle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <p className="font-semibold text-amber-900 text-sm">Set up your organization</p>
+            <p className="font-semibold text-amber-900 text-sm">Set up your organisation</p>
             <p className="text-amber-700 text-sm mt-1">
-              Create or join an organization to unlock all RoleFit AI features.
+              Create or join an organisation to unlock all RoleFit AI features.
             </p>
           </div>
           <Button variant="default" size="sm" asChild>
-            <Link href="/app/settings">Get Started <ArrowRight className="w-3.5 h-3.5 ml-1" /></Link>
+            <Link href="/onboarding">Get Started <ArrowRight className="w-3.5 h-3.5 ml-1" /></Link>
           </Button>
         </div>
       )}
