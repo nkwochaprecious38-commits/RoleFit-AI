@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import React from "react";
 import Link from "next/link";
 import { Sparkles } from "lucide-react";
@@ -39,7 +41,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           </div>
         </div>
         <div className="relative text-xs text-white/30">
-          &copy; {new Date().getFullYear()} RoleFit AI. All rights reserved.
+          &copy; 2025 RoleFit AI. All rights reserved.
         </div>
       </div>
 

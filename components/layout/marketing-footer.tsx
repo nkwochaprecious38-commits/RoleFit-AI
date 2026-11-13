@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Linkedin, Twitter, Mail } from "lucide-react";
+import { Sparkles, Globe, X, Mail } from "lucide-react";
 
 const footerLinks = {
   Products: [
@@ -45,10 +45,10 @@ export function MarketingFooter() {
             </p>
             <div className="flex items-center gap-3">
               <a href="#" className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <Linkedin className="w-4 h-4" />
+                <Globe className="w-4 h-4" />
               </a>
               <a href="#" className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <Twitter className="w-4 h-4" />
+                <X className="w-4 h-4" />
               </a>
               <a href="/contact" className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
                 <Mail className="w-4 h-4" />
@@ -80,7 +80,7 @@ export function MarketingFooter() {
 
         <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-sm text-white/50">
-            &copy; {new Date().getFullYear()} RoleFit AI. All rights reserved.
+            &copy; 2025 RoleFit AI. All rights reserved.
           </p>
           <p className="text-sm text-white/50">
             Built for responsible, transparent AI-assisted talent decisions.
