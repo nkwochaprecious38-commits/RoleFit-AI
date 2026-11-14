@@ -3,9 +3,23 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, ChevronDown, Sparkles } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+
+function RoleFitIcon({ className }: { className?: string }) {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className={className}>
+      <path
+        d="M4 2v12M4 2h5a3 3 0 0 1 0 6H4M9 8l4 6"
+        stroke="white"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 const products = [
   { href: "/products/match", label: "RoleFit Match", description: "AI candidate matching" },
@@ -49,9 +63,12 @@ export function MarketingNav() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple to-magenta flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-white" />
+              <RoleFitIcon />
             </div>
-            <span className="font-heading font-bold text-xl text-navy">
+            <span className={cn(
+              "font-heading font-bold text-xl transition-colors",
+              scrolled ? "text-navy" : "text-white"
+            )}>
               RoleFit <span className="text-gradient">AI</span>
             </span>
           </Link>
@@ -62,7 +79,7 @@ export function MarketingNav() {
             <div className="relative" onMouseEnter={() => setProductsOpen(true)} onMouseLeave={() => setProductsOpen(false)}>
               <button className={cn(
                 "flex items-center gap-1 text-sm font-medium transition-colors hover:text-purple",
-                pathname.startsWith("/products") ? "text-purple" : scrolled ? "text-charcoal" : "text-charcoal"
+                pathname.startsWith("/products") ? "text-purple" : scrolled ? "text-charcoal" : "text-white"
               )}>
                 Products <ChevronDown className={cn("w-4 h-4 transition-transform", productsOpen && "rotate-180")} />
               </button>
@@ -88,7 +105,7 @@ export function MarketingNav() {
                 href={link.href}
                 className={cn(
                   "text-sm font-medium transition-colors hover:text-purple",
-                  pathname === link.href ? "text-purple" : scrolled ? "text-charcoal" : "text-charcoal"
+                  pathname === link.href ? "text-purple" : scrolled ? "text-charcoal" : "text-white"
                 )}
               >
                 {link.label}
@@ -98,18 +115,18 @@ export function MarketingNav() {
 
           {/* CTA Buttons */}
           <div className="hidden lg:flex items-center gap-3">
-            <Button variant="ghost" asChild size="sm">
-              <Link href="/login">Login</Link>
+            <Button variant={scrolled ? "ghost" : "outline-white"} asChild size="sm">
+              <Link href="/login">Sign in</Link>
             </Button>
             <Button variant="mint" asChild size="sm">
-              <Link href="/demo">Request Demo</Link>
+              <Link href="/register">Sign up</Link>
             </Button>
           </div>
 
           {/* Mobile Menu */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="lg:hidden p-2 rounded-lg text-charcoal hover:bg-lavender"
+            className={cn("lg:hidden p-2 rounded-lg transition-colors", scrolled ? "text-charcoal hover:bg-lavender" : "text-white hover:bg-white/10")}
           >
             {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -145,10 +162,10 @@ export function MarketingNav() {
             ))}
             <div className="flex flex-col gap-2 pt-2 border-t border-border">
               <Button variant="outline" asChild>
-                <Link href="/login">Login</Link>
+                <Link href="/login">Sign in</Link>
               </Button>
               <Button variant="mint" asChild>
-                <Link href="/demo">Request Demo</Link>
+                <Link href="/register">Sign up</Link>
               </Button>
             </div>
           </div>

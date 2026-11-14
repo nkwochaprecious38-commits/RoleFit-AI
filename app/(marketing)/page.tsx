@@ -141,9 +141,8 @@ export default function HomePage() {
               AI-POWERED TALENT INTELLIGENCE
             </Badge>
             <h1 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-bold text-white leading-tight mb-6">
-              Beyond resumes.<br />
-              Beyond recruitment.<br />
-              <span className="text-gradient bg-gradient-to-r from-mint to-teal-300">Into workforce intelligence.</span>
+              The AI talent intelligence platform<br />
+              <span className="text-gradient bg-gradient-to-r from-mint to-teal-300">for businesses that cannot afford a bad hire.</span>
             </h1>
             <p className="text-lg sm:text-xl text-white/70 leading-relaxed mb-10 max-w-2xl">
               Finding the right people shouldn&apos;t be a guessing game. RoleFit AI helps businesses
@@ -151,12 +150,12 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="mint" size="lg" asChild>
-                <Link href="/demo">
-                  Request a Demo <ArrowRight className="w-4 h-4 ml-1" />
+                <Link href="/register">
+                  Get Started <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
               </Button>
               <Button variant="outline-white" size="lg" asChild>
-                <Link href="/products/match">Explore Our Platform</Link>
+                <Link href="/login">Sign in</Link>
               </Button>
             </div>
           </div>
@@ -360,10 +359,10 @@ export default function HomePage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="xl" className="bg-white text-purple hover:bg-white/90 font-semibold" asChild>
-              <Link href="/demo">Request a Demo <ArrowRight className="w-5 h-5 ml-1" /></Link>
+              <Link href="/register">Get Started <ArrowRight className="w-5 h-5 ml-1" /></Link>
             </Button>
             <Button size="xl" variant="outline-white" asChild>
-              <Link href="/register">Start Free Trial</Link>
+              <Link href="/login">Sign in</Link>
             </Button>
           </div>
         </div>

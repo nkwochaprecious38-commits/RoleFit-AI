@@ -1,6 +1,19 @@
 import React from "react";
 import Link from "next/link";
-import { Sparkles, Globe, X, Mail } from "lucide-react";
+
+function RoleFitIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+      <path
+        d="M4 2v12M4 2h5a3 3 0 0 1 0 6H4M9 8l4 6"
+        stroke="white"
+        strokeWidth="1.75"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
 
 const footerLinks = {
   Products: [
@@ -13,10 +26,8 @@ const footerLinks = {
   ],
   Company: [
     { href: "/about", label: "About Us" },
-    { href: "/contact", label: "Contact" },
     { href: "/resources", label: "Resources" },
     { href: "/trust", label: "Trust & Responsible AI" },
-    { href: "/demo", label: "Request Demo" },
   ],
   Legal: [
     { href: "/privacy", label: "Privacy Policy" },
@@ -33,27 +44,15 @@ export function MarketingFooter() {
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
               <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple to-magenta flex items-center justify-center">
-                <Sparkles className="w-4 h-4 text-white" />
+                <RoleFitIcon />
               </div>
               <span className="font-heading font-bold text-xl">
                 RoleFit <span className="text-mint">AI</span>
               </span>
             </Link>
-            <p className="text-sm text-white/70 leading-relaxed mb-6 max-w-xs">
-              Beyond resumes. Beyond recruitment. Into workforce intelligence.
-              AI-powered talent intelligence for modern organizations.
+            <p className="text-sm text-white/70 leading-relaxed max-w-xs">
+              The AI talent intelligence platform for businesses that cannot afford a bad hire.
             </p>
-            <div className="flex items-center gap-3">
-              <a href="#" className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <Globe className="w-4 h-4" />
-              </a>
-              <a href="#" className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <X className="w-4 h-4" />
-              </a>
-              <a href="/contact" className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors">
-                <Mail className="w-4 h-4" />
-              </a>
-            </div>
           </div>
 
           {/* Links */}

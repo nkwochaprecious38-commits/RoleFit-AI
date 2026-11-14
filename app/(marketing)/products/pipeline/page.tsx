@@ -1,0 +1,118 @@
+import React from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { ArrowRight, Users, CheckCircle2, MessageSquare, BarChart3, Zap, Shield } from "lucide-react";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "RoleFit Pipeline — Recruitment Management",
+  description: "End-to-end recruitment management with AI-assisted evaluation. Every candidate, every stage, fully in view.",
+};
+
+const features = [
+  { icon: Users, title: "Unified candidate pipeline", desc: "Track every candidate across every role in one clean view. No spreadsheets, no lost applicants, no duplicated effort across your team." },
+  { icon: CheckCircle2, title: "AI-assisted evaluation", desc: "RoleFit Match scores run inside every pipeline stage — so your team always has objective data alongside their own assessment." },
+  { icon: MessageSquare, title: "Collaborative feedback", desc: "Structured scorecards and feedback forms keep evaluation consistent. Comments, ratings and decisions captured in one place, visible to the right people." },
+  { icon: BarChart3, title: "Pipeline analytics", desc: "Track conversion rates at every stage, time-in-stage, offer acceptance rates and source quality. Know what&apos;s working and what&apos;s slowing you down." },
+  { icon: Zap, title: "Automated stage progression", desc: "Move candidates between stages automatically based on evaluation scores, assessments completed or time elapsed. Keep the process moving without manual admin." },
+  { icon: Shield, title: "Audit trail and compliance", desc: "Every decision, every communication and every evaluation is logged. Meet GDPR data subject requests and comply with audit requirements effortlessly." },
+];
+
+export default function PipelinePage() {
+  return (
+    <div className="min-h-screen">
+      <section className="relative bg-navy pt-32 pb-24 overflow-hidden">
+        <div className="absolute inset-0 opacity-10 pointer-events-none">
+          <div className="absolute top-20 left-1/4 w-96 h-96 rounded-full bg-purple blur-3xl" />
+          <div className="absolute bottom-10 right-1/4 w-80 h-80 rounded-full bg-magenta blur-3xl" />
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl">
+            <Badge variant="secondary" className="mb-6 bg-white/10 text-white border-white/20 text-xs uppercase tracking-widest">
+              RoleFit Pipeline
+            </Badge>
+            <h1 className="font-heading text-5xl sm:text-6xl font-bold text-white leading-tight mb-6">
+              Every candidate, every stage,<br />
+              <span className="text-gradient bg-gradient-to-r from-mint to-teal-300">fully in view.</span>
+            </h1>
+            <p className="text-lg text-white/70 leading-relaxed mb-10 max-w-2xl">
+              Recruitment falls apart when it lives across spreadsheets, email threads and disconnected tools. RoleFit Pipeline brings your entire hiring process into one place — with AI-assisted evaluation built into every stage so your decisions are grounded in evidence from first screen to final offer.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button variant="mint" size="lg" asChild>
+                <Link href="/register">Get Started <ArrowRight className="w-4 h-4 ml-1" /></Link>
+              </Button>
+              <Button variant="outline-white" size="lg" asChild>
+                <Link href="/login">Sign in</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+            {[
+              { label: "Average time-to-hire reduction", value: "33%" },
+              { label: "Hiring team coordination", value: "5×" },
+              { label: "Interview-to-offer conversion", value: "+22%" },
+              { label: "Compliance confidence", value: "100%" },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-white/10 backdrop-blur-sm rounded-xl p-5 border border-white/10">
+                <div className="font-heading text-3xl font-bold text-mint mb-1">{stat.value}</div>
+                <div className="text-sm text-white/60">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-2xl mx-auto text-center mb-16">
+            <Badge variant="secondary" className="mb-4">Capabilities</Badge>
+            <h2 className="font-heading text-3xl sm:text-4xl font-bold text-navy mb-4">
+              Recruitment that runs like a process, not a scramble
+            </h2>
+            <p className="text-muted-foreground">
+              The average time-to-fill is 42 days. Poor pipeline management adds two to three weeks to that unnecessarily.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {features.map((f) => {
+              const Icon = f.icon;
+              return (
+                <Card key={f.title} className="border-border">
+                  <CardContent className="p-6">
+                    <div className="w-10 h-10 rounded-lg bg-lavender flex items-center justify-center mb-4">
+                      <Icon className="w-5 h-5 text-purple" />
+                    </div>
+                    <h3 className="font-heading text-base font-semibold text-navy mb-2">{f.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                  </CardContent>
+                </Card>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="py-24 bg-gradient-to-br from-purple to-magenta">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="font-heading text-3xl sm:text-5xl font-bold text-white mb-6">Run recruitment like it matters. Because it does.</h2>
+          <p className="text-white/80 text-lg mb-10 max-w-2xl mx-auto">
+            Get every candidate, role and hiring decision into one structured, AI-assisted process.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="xl" className="bg-white text-purple hover:bg-white/90 font-semibold" asChild>
+              <Link href="/register">Get Started <ArrowRight className="w-5 h-5 ml-1" /></Link>
+            </Button>
+            <Button size="xl" variant="outline-white" asChild>
+              <Link href="/login">Sign in</Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
