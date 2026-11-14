@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import React from "react";
 import Link from "next/link";
-import { Sparkles } from "lucide-react";
+import Image from "next/image";
 
 export default function AuthLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -15,9 +15,14 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
         </div>
         <div className="relative">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple to-magenta flex items-center justify-center">
-              <Sparkles className="w-5 h-5 text-white" />
-            </div>
+            <Image
+              src="/logo.jpg"
+              alt="RoleFit AI"
+              width={40}
+              height={40}
+              className="rounded-xl object-contain"
+              priority
+            />
             <span className="font-heading font-bold text-2xl text-white">
               RoleFit <span className="text-mint">AI</span>
             </span>
@@ -49,9 +54,13 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       <div className="flex-1 flex flex-col justify-center px-6 py-12">
         <div className="lg:hidden mb-8 text-center">
           <Link href="/" className="inline-flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple to-magenta flex items-center justify-center">
-              <Sparkles className="w-4 h-4 text-white" />
-            </div>
+            <Image
+              src="/logo.jpg"
+              alt="RoleFit AI"
+              width={36}
+              height={36}
+              className="rounded-lg object-contain"
+            />
             <span className="font-heading font-bold text-xl text-navy">
               RoleFit <span className="text-gradient">AI</span>
             </span>

@@ -1,19 +1,6 @@
 import React from "react";
 import Link from "next/link";
-
-function RoleFitIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-      <path
-        d="M4 2v12M4 2h5a3 3 0 0 1 0 6H4M9 8l4 6"
-        stroke="white"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
+import Image from "next/image";
 
 const footerLinks = {
   Products: [
@@ -43,9 +30,13 @@ export function MarketingFooter() {
           {/* Brand */}
           <div className="md:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple to-magenta flex items-center justify-center">
-                <RoleFitIcon />
-              </div>
+              <Image
+                src="/logo.jpg"
+                alt="RoleFit AI"
+                width={36}
+                height={36}
+                className="rounded-lg object-contain"
+              />
               <span className="font-heading font-bold text-xl">
                 RoleFit <span className="text-mint">AI</span>
               </span>

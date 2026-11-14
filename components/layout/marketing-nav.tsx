@@ -2,24 +2,11 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-function RoleFitIcon({ className }: { className?: string }) {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" className={className}>
-      <path
-        d="M4 2v12M4 2h5a3 3 0 0 1 0 6H4M9 8l4 6"
-        stroke="white"
-        strokeWidth="1.75"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  );
-}
 
 const products = [
   { href: "/products/match", label: "RoleFit Match", description: "AI candidate matching" },
@@ -62,9 +49,14 @@ export function MarketingNav() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-purple to-magenta flex items-center justify-center">
-              <RoleFitIcon />
-            </div>
+            <Image
+              src="/logo.jpg"
+              alt="RoleFit AI"
+              width={36}
+              height={36}
+              className="rounded-lg object-contain"
+              priority
+            />
             <span className={cn(
               "font-heading font-bold text-xl transition-colors",
               scrolled ? "text-navy" : "text-white"
