@@ -30,7 +30,6 @@ export default function RegisterPage() {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
-  const supabase = createClient();
 
   const { register, handleSubmit, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(schema),
@@ -39,12 +38,13 @@ export default function RegisterPage() {
   const onSubmit = async (data: FormData) => {
     setLoading(true);
     try {
+      const supabase = createClient();
       const { error } = await supabase.auth.signUp({
         email: data.email,
         password: data.password,
         options: {
           data: { full_name: data.full_name },
-          emailRedirectTo: `${window.location.origin}/app/dashboard`,
+          emailRedirectTo: `${window.location.origin}/auth/callback`,
         },
       });
 
