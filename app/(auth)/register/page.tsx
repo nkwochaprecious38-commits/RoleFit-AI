@@ -48,22 +48,23 @@ export default function RegisterPage() {
         }),
       });
 
-      const json = await res.json();
+      let json: { error?: string; success?: boolean } = {};
+      try { json = await res.json(); } catch { /* non-JSON response */ }
 
       if (!res.ok) {
         toast({
           title: "Registration failed",
-          description: json.error || "Please try again.",
+          description: json.error || `Server error (${res.status}). Please try again.`,
           variant: "destructive",
         });
         return;
       }
 
       setDone(true);
-    } catch {
+    } catch (err) {
       toast({
         title: "Something went wrong",
-        description: "Please try again later.",
+        description: err instanceof Error ? err.message : "Please try again later.",
         variant: "destructive",
       });
     } finally {
