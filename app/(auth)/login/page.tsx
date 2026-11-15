@@ -38,12 +38,13 @@ export default function LoginPage() {
         body: JSON.stringify({ email: data.email, password: data.password }),
       });
 
-      const json = await res.json();
+      let json: { error?: string } = {};
+      try { json = await res.json(); } catch { /* non-JSON response */ }
 
       if (!res.ok) {
         toast({
           title: "Login failed",
-          description: json.error || "Invalid email or password.",
+          description: json.error || `Error ${res.status} — please try again.`,
           variant: "destructive",
         });
         return;
@@ -51,10 +52,10 @@ export default function LoginPage() {
 
       router.push("/app/dashboard");
       router.refresh();
-    } catch {
+    } catch (err) {
       toast({
         title: "Something went wrong",
-        description: "Please try again later.",
+        description: err instanceof Error ? err.message : "Please try again later.",
         variant: "destructive",
       });
     } finally {
