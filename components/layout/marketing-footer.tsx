@@ -13,6 +13,7 @@ const footerLinks = {
   ],
   Company: [
     { href: "/about", label: "About Us" },
+    { href: "/pricing", label: "Pricing" },
     { href: "/resources", label: "Resources" },
     { href: "/trust", label: "Trust & Responsible AI" },
   ],

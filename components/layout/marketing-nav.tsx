@@ -19,6 +19,7 @@ const products = [
 
 const navLinks = [
   { href: "/solutions", label: "Solutions" },
+  { href: "/pricing", label: "Pricing" },
   { href: "/about", label: "About" },
   { href: "/resources", label: "Resources" },
   { href: "/trust", label: "Trust" },
