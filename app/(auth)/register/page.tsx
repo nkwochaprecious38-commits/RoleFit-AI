@@ -9,7 +9,6 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { createClient } from "@/lib/supabase/client";
 import { useToast } from "@/lib/hooks/use-toast";
 import { Eye, EyeOff } from "lucide-react";
 
@@ -28,6 +27,7 @@ type FormData = z.infer<typeof schema>;
 export default function RegisterPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [done, setDone] = useState(false);
   const router = useRouter();
   const { toast } = useToast();
 
@@ -38,32 +38,28 @@ export default function RegisterPage() {
   const onSubmit = async (data: FormData) => {
     setLoading(true);
     try {
-      const supabase = createClient();
-      const { error } = await supabase.auth.signUp({
-        email: data.email,
-        password: data.password,
-        options: {
-          data: { full_name: data.full_name },
-          emailRedirectTo: `${window.location.origin}/auth/callback`,
-        },
+      const res = await fetch("/api/auth/signup", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+          full_name: data.full_name,
+        }),
       });
 
-      if (error) {
+      const json = await res.json();
+
+      if (!res.ok) {
         toast({
           title: "Registration failed",
-          description: error.message,
+          description: json.error || "Please try again.",
           variant: "destructive",
         });
         return;
       }
 
-      toast({
-        title: "Account created!",
-        description: "Please check your email to verify your account.",
-        variant: "success" as "default",
-      });
-
-      router.push("/app/dashboard");
+      setDone(true);
     } catch {
       toast({
         title: "Something went wrong",
@@ -74,6 +70,25 @@ export default function RegisterPage() {
       setLoading(false);
     }
   };
+
+  if (done) {
+    return (
+      <div className="text-center py-8">
+        <div className="w-14 h-14 rounded-full bg-mint/20 flex items-center justify-center mx-auto mb-5">
+          <svg className="w-7 h-7 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+        <h2 className="font-heading text-xl font-bold text-navy mb-2">Check your email</h2>
+        <p className="text-muted-foreground text-sm mb-6">
+          We&apos;ve sent a confirmation link to your inbox. Click it to activate your account.
+        </p>
+        <Link href="/login" className="text-sm text-purple font-medium hover:underline">
+          Back to sign in
+        </Link>
+      </div>
+    );
+  }
 
   return (
     <div>
