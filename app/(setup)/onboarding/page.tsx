@@ -117,7 +117,7 @@ export default function OnboardingPage() {
   };
 
   // ── Done: go to dashboard ──────────────────────────────────────────
-  const goToDashboard = () => router.push("/app/dashboard");
+  const goToDashboard = () => router.push("/dashboard");
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-navy via-[#2a2060] to-navy flex items-center justify-center p-4">
@@ -280,10 +280,10 @@ export default function OnboardingPage() {
 
               <div className="grid grid-cols-2 gap-3 text-left pt-2">
                 {[
-                  { emoji: "💼", label: "Post a job", desc: "Create your first role", href: "/app/jobs" },
-                  { emoji: "👥", label: "Add candidates", desc: "Build your talent pool", href: "/app/candidates" },
-                  { emoji: "🤖", label: "Run AI match", desc: "Score candidates vs roles", href: "/app/match" },
-                  { emoji: "✍️", label: "Job Studio", desc: "AI-write a JD", href: "/app/job-studio" },
+                  { emoji: "💼", label: "Post a job", desc: "Create your first role", href: "/jobs" },
+                  { emoji: "👥", label: "Add candidates", desc: "Build your talent pool", href: "/candidates" },
+                  { emoji: "🤖", label: "Run AI match", desc: "Score candidates vs roles", href: "/match" },
+                  { emoji: "✍️", label: "Job Studio", desc: "AI-write a JD", href: "/job-studio" },
                 ].map(item => (
                   <button
                     key={item.label}

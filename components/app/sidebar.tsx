@@ -26,21 +26,21 @@ import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 
 const navItems = [
-  { href: "/app/dashboard", label: "Dashboard", icon: LayoutDashboard },
+  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
   { type: "divider", label: "PLATFORM" },
-  { href: "/app/match", label: "RoleFit Match", icon: Brain },
-  { href: "/app/intelligence", label: "Intelligence", icon: BarChart3 },
-  { href: "/app/growth", label: "Growth", icon: TrendingUp },
-  { href: "/app/pipeline", label: "Pipeline", icon: Kanban },
-  { href: "/app/job-studio", label: "Job Studio", icon: FileText },
-  { href: "/app/interview", label: "Interview", icon: MessageSquare },
+  { href: "/match", label: "RoleFit Match", icon: Brain },
+  { href: "/intelligence", label: "Intelligence", icon: BarChart3 },
+  { href: "/growth", label: "Growth", icon: TrendingUp },
+  { href: "/pipeline", label: "Pipeline", icon: Kanban },
+  { href: "/job-studio", label: "Job Studio", icon: FileText },
+  { href: "/interview", label: "Interview", icon: MessageSquare },
   { type: "divider", label: "MANAGEMENT" },
-  { href: "/app/candidates", label: "Candidates", icon: Users },
-  { href: "/app/jobs", label: "Jobs", icon: Briefcase },
-  { href: "/app/team", label: "Team", icon: UserPlus },
+  { href: "/candidates", label: "Candidates", icon: Users },
+  { href: "/jobs", label: "Jobs", icon: Briefcase },
+  { href: "/team", label: "Team", icon: UserPlus },
   { type: "divider", label: "ACCOUNT" },
-  { href: "/app/settings", label: "Settings", icon: Settings },
-  { href: "/app/billing", label: "Billing", icon: CreditCard },
+  { href: "/settings", label: "Settings", icon: Settings },
+  { href: "/billing", label: "Billing", icon: CreditCard },
 ];
 
 interface SidebarProps {

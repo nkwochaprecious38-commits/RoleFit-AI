@@ -144,7 +144,7 @@ export default function PipelinePage() {
               Add candidates to jobs to start tracking your recruitment pipeline.
             </p>
             <Button variant="primary" asChild>
-              <a href="/app/candidates">Add Candidates</a>
+              <a href="/candidates">Add Candidates</a>
             </Button>
           </CardContent>
         </Card>

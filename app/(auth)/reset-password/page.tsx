@@ -35,7 +35,7 @@ export default function ResetPasswordPage() {
       toast({ title: "Reset failed", description: error.message, variant: "destructive" });
     } else {
       setDone(true);
-      setTimeout(() => router.push("/app/dashboard"), 2500);
+      setTimeout(() => router.push("/dashboard"), 2500);
     }
   };
 

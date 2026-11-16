@@ -92,7 +92,7 @@ export default function IntelligencePage() {
             </p>
           </div>
           <Button variant="default" size="sm" asChild>
-            <a href="/app/candidates">Add Candidates</a>
+            <a href="/candidates">Add Candidates</a>
           </Button>
         </div>
       )}

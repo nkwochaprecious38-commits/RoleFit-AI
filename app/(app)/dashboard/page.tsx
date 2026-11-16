@@ -103,7 +103,7 @@ export default function DashboardPage() {
         // Fetch recent candidates as activity
         const { data: recentCandidates } = await supabase
           .from("candidates")
-          .select("id, first_name, last_name, current_title, created_at")
+          .select("id, full_name, current_title, created_at")
           .eq("organization_id", orgId)
           .order("created_at", { ascending: false })
           .limit(5);
@@ -112,7 +112,7 @@ export default function DashboardPage() {
           (recentCandidates || []).map(c => ({
             id: c.id,
             type: "candidate" as const,
-            title: `${c.first_name} ${c.last_name}`,
+            title: c.full_name,
             description: c.current_title || "New candidate added",
             created_at: c.created_at,
           }))
@@ -129,11 +129,11 @@ export default function DashboardPage() {
   }, []);
 
   const statCards = [
-    { label: "Active Jobs", value: stats?.active_jobs ?? 0, total: stats?.total_jobs, icon: Briefcase, color: "text-purple", bg: "bg-lavender", href: "/app/jobs" },
-    { label: "Candidates", value: stats?.total_candidates ?? 0, icon: Users, color: "text-blue-600", bg: "bg-blue-50", href: "/app/candidates" },
-    { label: "Applications", value: stats?.total_applications ?? 0, icon: TrendingUp, color: "text-magenta", bg: "bg-pink-50", href: "/app/pipeline" },
-    { label: "Upcoming Interviews", value: stats?.upcoming_interviews ?? 0, icon: Calendar, color: "text-teal-600", bg: "bg-teal-50", href: "/app/interview" },
-    { label: "AI Matches", value: stats?.recent_matches ?? 0, icon: Brain, color: "text-amber-600", bg: "bg-amber-50", href: "/app/match" },
+    { label: "Active Jobs", value: stats?.active_jobs ?? 0, total: stats?.total_jobs, icon: Briefcase, color: "text-purple", bg: "bg-lavender", href: "/jobs" },
+    { label: "Candidates", value: stats?.total_candidates ?? 0, icon: Users, color: "text-blue-600", bg: "bg-blue-50", href: "/candidates" },
+    { label: "Applications", value: stats?.total_applications ?? 0, icon: TrendingUp, color: "text-magenta", bg: "bg-pink-50", href: "/pipeline" },
+    { label: "Upcoming Interviews", value: stats?.upcoming_interviews ?? 0, icon: Calendar, color: "text-teal-600", bg: "bg-teal-50", href: "/interview" },
+    { label: "AI Matches", value: stats?.recent_matches ?? 0, icon: Brain, color: "text-amber-600", bg: "bg-amber-50", href: "/match" },
   ];
 
   const pipelineData = [
@@ -158,12 +158,12 @@ export default function DashboardPage() {
         </div>
         <div className="flex gap-3">
           <Button variant="outline" size="sm" asChild>
-            <Link href="/app/candidates">
+            <Link href="/candidates">
               <Plus className="w-4 h-4 mr-1" /> Add Candidate
             </Link>
           </Button>
           <Button variant="primary" size="sm" asChild>
-            <Link href="/app/jobs">
+            <Link href="/jobs">
               <Plus className="w-4 h-4 mr-1" /> Post Job
             </Link>
           </Button>
@@ -230,7 +230,7 @@ export default function DashboardPage() {
                   <TrendingUp className="w-10 h-10 text-muted-foreground/30 mx-auto mb-3" />
                   <p className="text-sm text-muted-foreground">No applications yet</p>
                   <Button variant="outline" size="sm" className="mt-3" asChild>
-                    <Link href="/app/pipeline">View Pipeline</Link>
+                    <Link href="/pipeline">View Pipeline</Link>
                   </Button>
                 </div>
               </div>
@@ -283,12 +283,12 @@ export default function DashboardPage() {
       {/* Quick Actions */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
         {[
-          { label: "Match Candidates", href: "/app/match", icon: Brain, color: "from-purple to-magenta" },
-          { label: "View Pipeline", href: "/app/pipeline", icon: TrendingUp, color: "from-blue-500 to-purple" },
-          { label: "Job Studio", href: "/app/job-studio", icon: Briefcase, color: "from-amber-500 to-orange-500" },
-          { label: "Interview Kit", href: "/app/interview", icon: Calendar, color: "from-teal-500 to-mint" },
-          { label: "Team Analytics", href: "/app/intelligence", icon: Users, color: "from-magenta to-pink-400" },
-          { label: "Growth Plans", href: "/app/growth", icon: CheckCircle2, color: "from-green-500 to-teal-500" },
+          { label: "Match Candidates", href: "/match", icon: Brain, color: "from-purple to-magenta" },
+          { label: "View Pipeline", href: "/pipeline", icon: TrendingUp, color: "from-blue-500 to-purple" },
+          { label: "Job Studio", href: "/job-studio", icon: Briefcase, color: "from-amber-500 to-orange-500" },
+          { label: "Interview Kit", href: "/interview", icon: Calendar, color: "from-teal-500 to-mint" },
+          { label: "Team Analytics", href: "/intelligence", icon: Users, color: "from-magenta to-pink-400" },
+          { label: "Growth Plans", href: "/growth", icon: CheckCircle2, color: "from-green-500 to-teal-500" },
         ].map((action) => {
           const Icon = action.icon;
           return (

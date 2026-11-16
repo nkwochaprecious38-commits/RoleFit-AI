@@ -86,10 +86,10 @@ export function TopNav({ user, onMenuToggle }: TopNavProps) {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuItem asChild>
-              <Link href="/app/settings">Profile &amp; Settings</Link>
+              <Link href="/settings">Profile &amp; Settings</Link>
             </DropdownMenuItem>
             <DropdownMenuItem asChild>
-              <Link href="/app/billing">Billing</Link>
+              <Link href="/billing">Billing</Link>
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem onClick={handleSignOut} className="text-destructive">
