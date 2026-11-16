@@ -41,8 +41,11 @@ export async function updateSession(request: NextRequest) {
 
   const pathname = request.nextUrl.pathname;
 
+  const protectedRoutes = ["/dashboard", "/jobs", "/candidates", "/job-studio", "/match", "/interview", "/pipeline", "/intelligence", "/growth", "/settings", "/team", "/billing", "/onboarding"];
+  const isProtected = protectedRoutes.some(r => pathname === r || pathname.startsWith(r + "/"));
+
   // Protected routes: app shell and onboarding
-  if ((pathname.startsWith("/app") || pathname.startsWith("/onboarding")) && !user) {
+  if (isProtected && !user) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     url.searchParams.set("redirect", pathname);
